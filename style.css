@@ -1,0 +1,42 @@
+/*** The new CSS Reset - version 1.4.4 (last updated 22.12.2021) ***/
+:where(:not(iframe,canvas,img,svg,video):not(svg *,symbol *)){all:unset;display:revert}*,::after,::before{box-sizing:border-box}menu,ol,ul{list-style:none}img{max-width:100%}table{border-collapse:collapse}textarea{white-space:revert}:where([hidden]){display:none}:where([contenteditable]){-moz-user-modify:read-write;-webkit-user-modify:read-write;overflow-wrap:break-word;-webkit-line-break:after-white-space}:where([draggable=true]){-webkit-user-drag:element}
+
+body {
+    background-color: #222;
+}
+
+.wrapper {
+    width: 300px;
+    margin: 0 auto;
+    padding-top: 100px;
+}
+
+.letter {
+    background-color: #444;
+    width: 50px;
+    height: 50px;
+    float: left;
+    border-radius: 5px;
+    margin: 5px;
+
+    font-size: 3em;
+    color: #eee;
+    font-variant: all-small-caps;
+    font-family: Arial;
+    text-align: center;
+    line-height: .9em;
+}
+
+.word {
+    height: 60px;
+    display: block;
+    margin: 0 auto;
+}
+
+.correct {
+    background-color: #080;
+}
+
+.correct-pos {
+    background-color: #880;
+}

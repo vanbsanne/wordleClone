@@ -3,7 +3,6 @@ var word = [];
 var blocks = ["letter-00","letter-01","letter-02","letter-03","letter-04"]
 var refWord = ["d","a","n","c","e"];
 
-
     document.addEventListener('keydown', function(event)
     {
         var key = event.key.toLowerCase();
@@ -26,17 +25,18 @@ function isLetter(key){ //is it a letter between a and z?
     }
 }
 
-function compareLetters(){
+function compareLetters(){      //is position and letter ok?
     for(i=0;i<word.length;i++){
         for(j=0;j<refWord.length;j++){
             if(word[i]==refWord[i]){
                 console.log("same letter and place",word[i],refWord[i]);
+                document.getElementById(blocks[i]).classList.add("correct");
             } else if(word[i]==refWord[j]){
                 console.log("same letter",word[i],refWord[j]);
+                document.getElementById(blocks[i]).classList.add("correct-pos");
             } else{
                 console.log("not a common letter.",word[i],refWord[j]);
             }
         }
     }
-    //console.log(word.charAt(2));
 }

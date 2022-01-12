@@ -8,13 +8,12 @@ var blocks4 = ["letter-40","letter-41","letter-42","letter-43","letter-44"]
 var blocks5 = ["letter-50","letter-51","letter-52","letter-53","letter-54"]
 var refWord = ["d","a","n","c","e"];
 
-main();
-
+listening(blocks0);
 function main(){
     var blocks=[blocks0,blocks1,blocks2,blocks3,blocks4,blocks5];
     for(i=0;i<5;i++){
+        word.length = 0;
         listening(blocks[i]);
-        compareLetters(blocks[i]);
     }
 }
 
@@ -26,7 +25,9 @@ function listening(blocks){
             word.push(key);
             document.getElementById(blocks[word.length-1]).innerHTML = key;
             console.log(word);
-        } else if(word.length>=4) break;  
+        } else if(word.length>=4){
+            compareLetters(blocks);
+        }  
     })
 }
 

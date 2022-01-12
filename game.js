@@ -7,14 +7,15 @@ var blocks3 = ["letter-30","letter-31","letter-32","letter-33","letter-34"]
 var blocks4 = ["letter-40","letter-41","letter-42","letter-43","letter-44"]
 var blocks5 = ["letter-50","letter-51","letter-52","letter-53","letter-54"]
 var refWord = ["d","a","n","c","e"];
+ 
+main(); 
 
-listening(blocks0);
 function main(){
-    var blocks=[blocks0,blocks1,blocks2,blocks3,blocks4,blocks5];
-    for(i=0;i<5;i++){
-        word.length = 0;
-        listening(blocks[i]);
-    }
+    listening(blocks0);
+    // var blocks=[blocks0,blocks1,blocks2,blocks3,blocks4,blocks5];
+    // for(i=0;i<5;i++){
+    //     listening(blocks[i]);
+    // }
 }
 
 function listening(blocks){
@@ -26,7 +27,12 @@ function listening(blocks){
             document.getElementById(blocks[word.length-1]).innerHTML = key;
             console.log(word);
         } else if(word.length>=4){
-            compareLetters(blocks);
+            if(word.toString() === refWord.toString()){
+                console.log("This is the correct word");
+            } else{
+                console.log("This is not the correct word");
+                compareLetters(blocks);
+            }
         }  
     })
 }
@@ -54,5 +60,5 @@ function compareLetters(blocks){      //is position and letter ok?
                 console.log("not a common letter.",word[i],refWord[j]);
             }
         }
-    }
+    } word.length = 0;
 }

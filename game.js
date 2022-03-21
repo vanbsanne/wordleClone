@@ -5,6 +5,7 @@ var currentWord = 0;
 var currentLetter = 0;
 var gameSet = false;
 var winner = false;
+var wordCorrect=[];
 
 
 document.addEventListener('keydown', function(event)
@@ -72,14 +73,22 @@ function isLetter(key){ //is it a letter between a and z?
 }
 
 function compareLetters(){      //is position and letter ok?
+
+	wordCorrect = ["x","x","x","x","x"];
+	
     for(i=0;i<word.length;i++){
-        var newBlocks = "letter-"+currentWord+i;
-        for(j=0;j<refWord.length;j++){
-            if(word[i]==refWord[i]){
-                document.getElementById(newBlocks).classList.add("correct");
-            } else if(word[i]==refWord[j]){
-                document.getElementById(newBlocks).classList.add("correct-pos");
-            }
-        }
-    }
+		var newBlocks = "letter-"+currentWord+i;
+		for(j=0;j<refWord.length;j++){
+			if(word[i]==refWord[i]){
+				wordCorrect[i]="g";
+				document.getElementById(newBlocks).classList.add("correct")
+				console.log(wordCorrect);
+			} 
+			else if((word[i]==refWord[j])&&(wordCorrect[i]!="g")){ //should not check on wordcorrect[i] but if word and refword are y at a position.
+				wordCorrect[i]="o";
+				document.getElementById(newBlocks).classList.add("correct-pos");
+				console.log(wordCorrect);
+			}
+		}	
+	}
 }

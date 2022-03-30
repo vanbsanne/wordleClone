@@ -21,25 +21,20 @@ document.addEventListener('keydown', function(event)
         newBlocks = "letter-"+currentWord+currentLetter;
         document.getElementById(newBlocks).innerHTML = "";
     }
-    console.log(key);
     var newBlocks = "letter-"+currentWord+currentLetter;
     if((isLetter(key)&&key.length==1)){
         word.push(key);
         document.getElementById(newBlocks).innerHTML = key;
-        console.log(currentLetter);
         currentLetter++;
         if(currentLetter>4){
             compareLetters();
             if(word.join("") === refWord.toString()){
-                console.log("This is the correct word");
                 gameSet=true;
                 winner=true;
                 alert("AYYY");
             } else{
                 if(words.includes(word.join("")))
-                {
-                    console.log("This is not the correct word");
-                    
+                {    
                     currentWord++;
                     if(currentWord==6){
                         gameSet=true;
@@ -65,10 +60,8 @@ document.addEventListener('keydown', function(event)
 
 function isLetter(key){ //is it a letter between a and z?
     if (key >= 'a' && key <= 'z'){
-        console.log("is letter");
         return true;
     } else{
-        console.log("This is not a valid letter.");
         return false;
     }
 }

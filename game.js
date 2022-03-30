@@ -1,6 +1,7 @@
 var key = "";
 var word = [];
-var refWord = words[Math.trunc(Math.random()*words.length)]; /*trunc= delete decimal part */
+//var refWord = words[Math.trunc(Math.random()*words.length)]; /*trunc= delete decimal part */
+var refWord = ["d","a","n","c","e"];
 var currentWord = 0;
 var currentLetter = 0;
 var gameSet = false;
@@ -72,23 +73,41 @@ function isLetter(key){ //is it a letter between a and z?
     }
 }
 
-function compareLetters(){      //is position and letter ok?
+function compareLetters() { //is position and letter ok?
+    var used = [false, false, false, false, false];
+    var color = ["w", "w", "w", "w", "w"]; //w = white, g = green, y = yellow
 
-	wordCorrect = ["x","x","x","x","x"];
-	
-    for(i=0;i<word.length;i++){
-		var newBlocks = "letter-"+currentWord+i;
-		for(j=0;j<refWord.length;j++){
-			if(word[i]==refWord[i]){
-				wordCorrect[i]="g";
-				document.getElementById(newBlocks).classList.add("correct")
-				console.log(wordCorrect);
-			} 
-			else if((word[i]==refWord[j])&&(wordCorrect[i]!="g")){ //should not check on wordcorrect[i] but if word and refword are y at a position.
-				wordCorrect[i]="o";
-				document.getElementById(newBlocks).classList.add("correct-pos");
-				console.log(wordCorrect);
-			}
-		}	
-	}
+    for (i = 0; i < word.length; i++)
+    {
+
+        if (word[i] == refWord[i] && !used[i])
+        {
+            used[i] = true;
+            color[i] = "g"
+        }
+        else
+        {
+            var index = refWord.indexOf(word[i]);
+
+            if (index >= 0 && !used[index])
+            {
+                used[index] = true;
+                color[i] = "y"
+            }
+        }
+    }
+
+    for (var i = 0; i < used.length; i++)
+    {
+        var id = "letter-" + currentWord + i;
+
+        if (color[i] == "g")
+        {
+            document.getElementById(id).classList.add("correct");
+        }
+        else if (color[i] == "y")
+        {
+            document.getElementById(id).classList.add("correct-pos");
+        }
+    }
 }
